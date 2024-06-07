@@ -12,4 +12,7 @@
 
   --line-height-base: 1;
   --text-color-base: var(--color-black);
+
+  --container-max-width: 1416px;
+  --container-margin: 16px;
 }
