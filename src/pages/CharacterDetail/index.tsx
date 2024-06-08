@@ -4,8 +4,16 @@ import { useCharacters } from "@/context/CharacterContext";
 
 const CharacterDetail: React.FC = () => {
   const { id } = useParams<{ id: string | undefined }>();
-  const { characters, comics, fetchComicsByCharacter, loading, error } =
-    useCharacters();
+  const {
+    characters,
+    characterById,
+    comics,
+    fetchCharacters,
+    fetchCharacterById,
+    fetchComicsByCharacter,
+    loading,
+    error,
+  } = useCharacters();
 
   const characterId = useMemo(() => Number(id), [id]);
 
@@ -16,16 +24,25 @@ const CharacterDetail: React.FC = () => {
   }, [characterId, fetchComicsByCharacter, id]);
 
   useEffect(() => {
-    // If context api state is not undefined
     if (characterId && characters.length !== 0) {
       fetchComicsByCharacter(characterId.toString());
     }
   }, [id, fetchComicsByCharacter]);
 
-  const characterById = useMemo(
+  useEffect(() => {
+    // If context api state is not undefined
+    if (characterId && !characters.length) {
+      console.log("entró a fetchear un personaje");
+      fetchCharacterById(id!);
+    }
+  }, [id, fetchCharacters]);
+
+  const contextCharacterById = useMemo(
     () => characters.find((character) => character.id === Number(id)),
     [characters, characterId]
   );
+
+  const selectedCharacter = contextCharacterById || characterById.at(0);
 
   if (!characterId) {
     return <div>Character not found</div>;
@@ -43,20 +60,16 @@ const CharacterDetail: React.FC = () => {
 
   return (
     <article>
-      {characters.length ? (
-        <>
-          <h1>{characterById?.name}</h1>
-          <p>{characterById?.description}</p>
-          <img
-            src={characterById?.imageSrc}
-            alt={characterById?.name}
-            width="150"
-            height="150"
-          />
-        </>
-      ) : (
-        <p>Character not found</p>
-      )}
+      <>
+        <h1>{selectedCharacter?.name}</h1>
+        <p>{selectedCharacter?.description}</p>
+        <img
+          src={selectedCharacter?.imageSrc}
+          alt={selectedCharacter?.name}
+          width="150"
+          height="150"
+        />
+      </>
 
       {characterComics && (
         <ul>
