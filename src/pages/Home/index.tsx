@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useCharacters } from "@/context/CharacterContext";
+import CharacterItemList from "@/components/molecules/CharacterItemList";
 
 const Home: React.FC = () => {
   const { characters, fetchCharacters, loading, error } = useCharacters();
@@ -19,18 +19,7 @@ const Home: React.FC = () => {
 
   return (
     <article>
-      {characters && (
-        <ul>
-          {characters.map(({ id, imageSrc, name, url }) => (
-            <li key={id}>
-              <Link to={url} key={id}>
-                <img src={imageSrc} alt={name} width="150" height="150" />
-                <h2>{name}</h2>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {characters && <CharacterItemList characters={characters} />}
     </article>
   );
 };

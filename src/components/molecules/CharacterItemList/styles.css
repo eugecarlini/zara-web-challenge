@@ -1,0 +1,10 @@
+.character__list {
+  display: flex;
+  justify-items: space-between;
+}
+
+.character__item {
+  width: 188.57px;
+  height: 245.97px;
+  background-color: var(--color-black);
+}
