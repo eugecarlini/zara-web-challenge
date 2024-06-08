@@ -15,22 +15,15 @@ export async function getCharacters(): Promise<CharacterDto[]> {
   }
 }
 
-export async function getCharactersById(id: string): Promise<CharacterDto[]> {
-  const queryStrings = "&limit=20";
-  const url = generateUrl(CHARACTERS_ROUTE, `/${id}`, queryStrings);
-
-  try {
-    const { data } = await axios.get(url);
-    return data?.data?.results;
-  } catch (error: any) {
-    throw error;
-  }
-}
-
 export async function getComicsByCharacterId(
   characterId: string
 ): Promise<ComicDto[]> {
-  const url = generateUrl(CHARACTERS_ROUTE, `/${characterId}${COMICS_ROUTE}`);
+  const url = generateUrl(
+    CHARACTERS_ROUTE,
+    `/${characterId}${COMICS_ROUTE}`,
+    "&orderBy=onsaleDate",
+    20
+  );
 
   try {
     const { data } = await axios.get(url);

@@ -4,7 +4,8 @@ import { generateQueryString } from "@/utils/generateQueryStrings";
 export const generateUrl = (
   route: string,
   path: string = "",
-  additionalParams: string = ""
+  additionalParams: string = "",
+  limit: number = 50
 ): string => {
-  return `${API_BASE_URL}${route}${path}${generateQueryString()}${additionalParams}`;
+  return `${API_BASE_URL}${route}${path}${generateQueryString()}${additionalParams}&limit=${limit}`;
 };
