@@ -4,3 +4,4 @@ export const API_BASE_URL =
 export const CHARACTERS_ROUTE =
   import.meta.env.VITE_CHARACTERS_ROUTE || "/public/characters";
 export const COMICS_ROUTE = import.meta.env.VITE_COMICS_ROUTE || "/comics";
+export const CHARACTER_DETAIL_URL = "/character-detail";
