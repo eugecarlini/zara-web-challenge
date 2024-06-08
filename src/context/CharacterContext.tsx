@@ -8,7 +8,7 @@ import React, {
 import {
   getComicsByCharacterId,
   getCharacters,
-} from "@/services/charactersService";
+} from "@/services/characterService";
 import { transformCharacters } from "@/utils/transformCharacters";
 import { transformComics } from "@/utils/transformComics";
 import { FormattedCharacter, FormattedComic } from "@/types/formattedTypes";
