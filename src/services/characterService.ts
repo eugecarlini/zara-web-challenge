@@ -15,6 +15,17 @@ export async function getCharacters(): Promise<CharacterDto[]> {
   }
 }
 
+export async function getCharacterById(id: string): Promise<CharacterDto[]> {
+  const url = generateUrl(CHARACTERS_ROUTE, `/${id}`);
+
+  try {
+    const { data } = await axios.get(url);
+    return data?.data?.results;
+  } catch (error: any) {
+    throw error;
+  }
+}
+
 export async function getComicsByCharacterId(
   characterId: string
 ): Promise<ComicDto[]> {
