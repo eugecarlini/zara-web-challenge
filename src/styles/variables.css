@@ -9,6 +9,7 @@
   /* Font */
   --font-family-base: Roboto Condensed, system-ui, Arial, sans-serif;
   --font-weight-base: 400;
+  --font-size-base: 16px;
 
   --line-height-base: 1;
   --text-color-base: var(--color-black);
