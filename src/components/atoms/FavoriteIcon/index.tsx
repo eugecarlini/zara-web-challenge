@@ -3,29 +3,26 @@ import "./styles.css";
 
 type FavoriteIconProps = {
   isActive: boolean;
-  width?: number;
-  height?: number;
 };
 
-const FavoriteIcon: React.FC<FavoriteIconProps> = ({
-  isActive,
-  width = 13,
-  height = 12,
-}) => {
+const FavoriteIcon: React.FC<FavoriteIconProps> = ({ isActive }) => {
+  const modifier = isActive ? "active" : "inactive";
+
   return (
     <svg
+      className={`favorite-icon favorite-icon--${modifier}`}
       xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
+      width="24"
+      height="22"
+      viewBox="-1 -1 26 24"
       fill="none"
-      className={`icon__favorite icon__favorite--${isActive ? "red" : "empty"}`}
     >
       <path
         fillRule="evenodd"
-        strokeWidth="1"
-        d="M6.571 2.373l-3-1.82-3 1.82v3.902l6 5.115 6-5.115V2.373l-3-1.82-3 1.82z"
+        strokeWidth="2"
         clipRule="evenodd"
-      ></path>
+        d="M12 3.92359L6 0.281967L0 3.92359V11.7271L12 21.9583L24 11.7271V3.92359L18 0.281967L12 3.92359Z"
+      />
     </svg>
   );
 };

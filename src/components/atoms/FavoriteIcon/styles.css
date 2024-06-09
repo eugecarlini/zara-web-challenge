@@ -1,18 +1,18 @@
-.icon__favorite {
-  transition: fill 0.3s;
+.favorite-icon {
+  transition: fill 0.3s, stroke 0.3s;
 }
 
-.icon__favorite--red {
+.favorite-icon--active {
   fill: var(--color-red);
   stroke: var(--color-red);
 }
 
-.icon__favorite--empty {
+.favorite-icon--inactive {
   fill: var(--color-black);
   stroke: var(--color-white);
 }
 
-.icon__favorite--hold {
+.favorite-icon--hover {
   fill: var(--color-white);
   stroke: var(--color-white);
 }

@@ -11,6 +11,7 @@ const Logo: React.FC = () => {
       to="/"
       onClick={() => toggleFavorites(false)}
       aria-label="Go to homepage"
+      className="logo"
     >
       <img src={logo} alt="Marvel logo" />
     </Link>

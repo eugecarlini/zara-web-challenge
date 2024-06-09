@@ -17,7 +17,7 @@ const ComicsCarousel: React.FC<ComicsCarouselProps> = ({ comics }) => (
             alt={`Cover of ${name}`}
           />
 
-          <figcaption>
+          <figcaption className="character-detail__comic-caption">
             <p className="character-detail__comic-name">{name}</p>
             <p className="character-detail__comic-year">{year}</p>
           </figcaption>

@@ -28,6 +28,7 @@ const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
       <footer className="character__footer">
         <div className="character__footer-bar"></div>
         <h2 className="character__footer-title">{name}</h2>
+
         <ToggleFavoriteButton
           isFavorited={isActive}
           onClick={handleToggleFavorite}

@@ -23,6 +23,11 @@
   position: relative;
 }
 
+.character__footer .favorite-icon {
+  width: 12px;
+  height: 10.84px;
+}
+
 .character__footer-bar {
   position: absolute;
   background-color: var(--color-red);

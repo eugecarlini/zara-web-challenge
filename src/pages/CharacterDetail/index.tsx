@@ -67,9 +67,13 @@ const CharacterDetail: React.FC = () => {
 
       <section className="character-comics">
         <Container>
-          <div className="character-comics__container">
+          <div className="character-comics__wrapper">
             <h2 className="character-comics__subtitle">Comics</h2>
-            {characterComics && <ComicsCarousel comics={characterComics} />}
+            {characterComics && characterComics.length ? (
+              <ComicsCarousel comics={characterComics} />
+            ) : (
+              <p>No comics found for this character</p>
+            )}
           </div>
         </Container>
       </section>
