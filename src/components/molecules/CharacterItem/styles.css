@@ -40,10 +40,10 @@
   cursor: default;
 }
 
-.character__item-image {
-  object-fit: cover;
-  height: 100%;
+.character__item-cover {
   width: inherit;
+  height: 100%;
+  object-fit: cover;
 }
 
 .character__item-link {
@@ -61,7 +61,7 @@
     width: 188.57px;
   }
 
-  .character__item-image {
+  .character__item-cover {
     width: 188.57px;
   }
 }

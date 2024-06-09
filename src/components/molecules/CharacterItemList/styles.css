@@ -1,19 +1,18 @@
 .character__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 16px;
+  gap: 16px;
 }
 
 .character__list-item {
   width: 172.5px;
   height: 245.97px;
   background-color: var(--color-black);
-  margin-bottom: 16px;
 }
 
 @media (min-width: 1512px) {
   .character__list-item {
-    width: 189.97px;
+    width: 188.57px;
   }
 }
