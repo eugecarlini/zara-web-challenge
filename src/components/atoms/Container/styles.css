@@ -8,7 +8,7 @@
   min-width: var(--min-width);
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1512px) {
   .container {
     padding: 0;
   }

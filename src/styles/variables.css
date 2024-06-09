@@ -7,14 +7,15 @@
   --color-red: #ec1d24;
 
   /* Font */
-  --font-family-base: Roboto Condensed, system-ui, Arial, sans-serif;
+  --font-family-base: "Roboto Condensed", system-ui, Arial, sans-serif;
   --font-weight-base: 400;
   --font-size-base: 16px;
 
-  --line-height-base: 1;
+  --line-height-base: 1.2;
   --text-color-base: var(--color-black);
   --container-max-width: 1416px;
   --container-margin: 16px;
-  --min-width: 425px;
   --header-height: 84px;
+
+  --min-width: 393px;
 }
