@@ -2,19 +2,19 @@ import React from "react";
 import "./styles.css";
 
 type FavoriteIconProps = {
-  isActive: boolean;
+  isFavorite: boolean;
 };
 
-const FavoriteIcon: React.FC<FavoriteIconProps> = (isActive) => {
-  const iconModifier = isActive ? "red" : "empty";
-
+const FavoriteIcon: React.FC<FavoriteIconProps> = ({ isFavorite }) => {
   return (
     <svg
-      className={`icon__favorite icon__favorite--${iconModifier}`}
       xmlns="http://www.w3.org/2000/svg"
       width="13"
       height="12"
       fill="none"
+      className={`icon__favorite icon__favorite--${
+        isFavorite ? "red" : "empty"
+      }`}
     >
       <path
         fillRule="evenodd"

@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useCharacters } from "@/context/CharacterContext";
+import { useFavoriteList } from "@/context/FavoritesContext";
 
 const CharacterDetail: React.FC = () => {
+  const { toggleFavorites } = useFavoriteList();
   const { id } = useParams<{ id: string | undefined }>();
   const {
     characters,
@@ -32,7 +34,6 @@ const CharacterDetail: React.FC = () => {
   useEffect(() => {
     // If context api state is not undefined
     if (characterId && !characters.length) {
-      console.log("entró a fetchear un personaje");
       fetchCharacterById(id!);
     }
   }, [id, fetchCharacters]);

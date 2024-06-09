@@ -1,3 +1,4 @@
+import { useFavoriteList } from "@/context/FavoritesContext";
 import { getFavoritesFromLocalStorage } from "@/utils/getFavoritesFromLocalStorage";
 
 const useFavoriteCharacter = () => {
@@ -6,7 +7,7 @@ const useFavoriteCharacter = () => {
   }
 
   const toggleFavorite = (characterId: number) => {
-    const favorites = getFavoritesFromLocalStorage();
+    const { favorites } = useFavoriteList();
 
     if (favorites && !favorites.includes(characterId)) {
       localStorage.setItem(
