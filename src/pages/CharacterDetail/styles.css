@@ -35,8 +35,6 @@
   text-transform: uppercase;
 }
 
-/* COMICS SECTION */
-
 .character-comics {
   margin: 48px 0 32px;
 }
@@ -50,7 +48,7 @@
   font-size: 32px;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 768px) {
@@ -68,11 +66,12 @@
   }
 
   .character-detail__info {
-    width: 592px;
-    max-width: 592px;
+    width: 640px;
+    max-width: 640px;
+    padding: 0 24px;
   }
 
-  .character-comics__container {
+  .character-comics__wrapper {
     width: 960px;
     max-width: 960px;
     margin: auto;
@@ -88,5 +87,9 @@
     width: 320px;
     height: 320px;
     object-fit: cover;
+  }
+
+  .character-detail__info {
+    padding: 0 0 0 48px;
   }
 }

@@ -3,12 +3,12 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   scrollbar-width: thin;
+  gap: 16px;
 }
 
 .character-detail__comics-list-item {
   flex: 0 0 auto;
   width: 179.2px;
-  margin-right: 16px;
 }
 
 .character-detail__comic-cover {
@@ -38,6 +38,7 @@
 @media (min-width: 1512px) {
   .character-detail__comic-cover {
     width: 180px;
+    margin-bottom: 8px;
   }
 
   .character-detail__comics-list {
