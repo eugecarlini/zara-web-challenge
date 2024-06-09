@@ -83,4 +83,10 @@
   .character-detail__hero {
     height: 320px;
   }
+
+  .character-detail__hero-cover {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+  }
 }
