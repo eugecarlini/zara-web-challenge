@@ -1,10 +1,11 @@
-import { getFavoritesFromLocalStorage } from "@/utils/getFavoritesFromLocalStorage";
 import React, { createContext, useState, useContext } from "react";
+import { getFavoritesFromLocalStorage } from "@/utils/getFavoritesFromLocalStorage";
 
 interface FavoritesContextProps {
-  favorites: number[];
   showFavorites: boolean;
   toggleFavorites: (isActive: boolean) => void;
+  favoriteList: number[];
+  updateFavoriteList: (ids: number[]) => void;
 }
 
 const FavoritesContext = createContext<FavoritesContextProps | undefined>(
@@ -15,14 +16,21 @@ export const FavoriteListProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [showFavorites, setShowFavorites] = useState<boolean>(false);
+  const [favoriteList, setFavoriteList] = useState(
+    getFavoritesFromLocalStorage()
+  );
 
   const toggleFavorites = (isActive: boolean) => setShowFavorites(isActive);
-
-  const favorites = getFavoritesFromLocalStorage();
+  const updateFavoriteList = (ids: number[]) => setFavoriteList(ids);
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, showFavorites, toggleFavorites }}
+      value={{
+        favoriteList,
+        showFavorites,
+        toggleFavorites,
+        updateFavoriteList,
+      }}
     >
       {children}
     </FavoritesContext.Provider>

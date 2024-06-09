@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useFavoriteList } from "@/context/FavoritesContext";
 import { useCharacters } from "@/context/CharacterContext";
 import CharacterItemList from "@/components/molecules/CharacterItemList";
-import useFavoriteCharacter from "@/hooks/useFavoriteCharacter";
 import { Character } from "@/types/character";
+import Container from "@/components/atoms/Container";
+import "./styles.css";
 
 const Home: React.FC = () => {
   const { characters, fetchCharacters, loading, error } = useCharacters();
-  const { showFavorites } = useFavoriteList();
-  const { getFavoritesFromLocalStorage } = useFavoriteCharacter();
+  const { showFavorites, favoriteList } = useFavoriteList();
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (showFavorites) {
-      const favorites = getFavoritesFromLocalStorage();
+      const favorites = favoriteList;
       const filteredFavs = characters.filter((character) =>
         favorites.includes(character.id)
       );
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
     } else {
       setFilteredCharacters(characters);
     }
-  }, [showFavorites, characters]);
+  }, [showFavorites, characters, favoriteList]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -36,15 +36,12 @@ const Home: React.FC = () => {
   }
 
   return (
-    <article>
-      {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
-      {characters && <CharacterItemList characters={filteredCharacters} />}
-
-      {/* <>
+    <Container>
+      <article className="home__wrapper">
         {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
         {characters && <CharacterItemList characters={filteredCharacters} />}
-      </> */}
-    </article>
+      </article>
+    </Container>
   );
 };
 

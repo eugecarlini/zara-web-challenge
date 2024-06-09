@@ -1,14 +1,12 @@
 import React, { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useCharacters } from "@/context/CharacterContext";
-import { useFavoriteList } from "@/context/FavoritesContext";
 import Container from "@/components/atoms/Container";
 import ComicsCarousel from "@/components/molecules/ComicsCarousel";
 import Hero from "@/components/molecules/Hero";
 import "./styles.css";
 
 const CharacterDetail: React.FC = () => {
-  const { toggleFavorites } = useFavoriteList();
   const { id } = useParams<{ id: string | undefined }>();
   const {
     characters,
@@ -65,12 +63,7 @@ const CharacterDetail: React.FC = () => {
 
   return (
     <main className="character-detail">
-      {selectedCharacter && (
-        <Hero
-          {...selectedCharacter}
-          // onToggleFavorite={toggleFavorites}
-        />
-      )}
+      {selectedCharacter && <Hero {...selectedCharacter} />}
 
       <section className="character-comics">
         <Container>

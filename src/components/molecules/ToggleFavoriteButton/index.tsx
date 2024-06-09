@@ -3,16 +3,16 @@ import FavoriteIcon from "@/components/atoms/FavoriteIcon";
 import "./styles.css";
 
 type ToggleFavoriteButtonProps = {
+  isFavorited: boolean;
   onClick: () => void;
   className?: string;
 };
 
 const ToggleFavoriteButton: React.FC<ToggleFavoriteButtonProps> = ({
+  isFavorited,
   onClick,
   className,
 }) => {
-  const isFavorited = false;
-
   return (
     <button
       onClick={onClick}

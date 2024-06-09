@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { Character } from "@/types/character";
 import useFavoriteCharacter from "@/hooks/useFavoriteCharacter";
@@ -6,10 +6,12 @@ import ToggleFavoriteButton from "@/components/molecules/ToggleFavoriteButton";
 import "./styles.css";
 
 const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
-  const { toggleFavorite } = useFavoriteCharacter();
+  const { isFavorited, toggleFavorite } = useFavoriteCharacter();
+  const [isActive, setIsActive] = useState(isFavorited(id));
 
   const handleToggleFavorite = useCallback(() => {
     toggleFavorite(id);
+    setIsActive(!isActive);
   }, [toggleFavorite, id]);
 
   return (
@@ -20,13 +22,16 @@ const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
         className="character__item-link"
         aria-label={`Go to detail page`}
       >
-        <img className="character__item-image" src={imageSrc} alt={name} />
+        <img className="character__item-cover" src={imageSrc} alt={name} />
       </Link>
 
       <footer className="character__footer">
         <div className="character__footer-bar"></div>
         <h2 className="character__footer-title">{name}</h2>
-        <ToggleFavoriteButton onClick={handleToggleFavorite} />
+        <ToggleFavoriteButton
+          isFavorited={isActive}
+          onClick={handleToggleFavorite}
+        />
       </footer>
     </article>
   );
