@@ -3,17 +3,23 @@ import "./styles.css";
 
 type FavoriteIconProps = {
   isActive: boolean;
+  width?: number;
+  height?: number;
 };
 
-const FavoriteIcon: React.FC<FavoriteIconProps> = (isActive) => {
+const FavoriteIcon: React.FC<FavoriteIconProps> = ({
+  isActive,
+  width = 13,
+  height = 12,
+}) => {
   const iconModifier = isActive ? "red" : "empty";
 
   return (
     <svg
       className={`icon__favorite icon__favorite--${iconModifier}`}
       xmlns="http://www.w3.org/2000/svg"
-      width="13"
-      height="12"
+      width={width}
+      height={height}
       fill="none"
     >
       <path

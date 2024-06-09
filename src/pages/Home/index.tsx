@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useCharacters } from "@/context/CharacterContext";
 import CharacterItemList from "@/components/molecules/CharacterItemList";
+import Container from "@/components/atoms/Container";
 
 const Home: React.FC = () => {
   const { characters, fetchCharacters, loading, error } = useCharacters();
@@ -18,9 +19,11 @@ const Home: React.FC = () => {
   }
 
   return (
-    <article>
-      {characters && <CharacterItemList characters={characters} />}
-    </article>
+    <Container>
+      <article>
+        {characters && <CharacterItemList characters={characters} />}
+      </article>
+    </Container>
   );
 };
 
