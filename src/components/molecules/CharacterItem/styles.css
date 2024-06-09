@@ -33,10 +33,6 @@
   z-index: 1;
 }
 
-.character__footer-button {
-  height: 12px;
-}
-
 .character__footer-title {
   color: var(--color-white);
   font-weight: var(--font-weight-base);
