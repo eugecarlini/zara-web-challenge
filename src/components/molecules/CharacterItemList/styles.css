@@ -1,10 +1,19 @@
 .character__list {
   display: flex;
-  justify-items: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 16px;
 }
 
-.character__item {
-  width: 188.57px;
+.character__list-item {
+  width: 172.5px;
   height: 245.97px;
   background-color: var(--color-black);
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1512px) {
+  .character__list-item {
+    width: 189.97px;
+  }
 }

@@ -9,16 +9,14 @@ interface CharacterItemListProps {
 
 const CharacterItemList: React.FC<CharacterItemListProps> = ({
   characters,
-}) => {
-  return (
-    <ul className="character__list">
-      {characters?.map((character: Character) => (
-        <li key={character.id} className="character__item">
-          <CharacterItem {...character} />
-        </li>
-      ))}
-    </ul>
-  );
-};
+}) => (
+  <ul className="character__list">
+    {characters?.map((character: Character) => (
+      <li key={character.id} className="character__list-item">
+        <CharacterItem {...character} />
+      </li>
+    ))}
+  </ul>
+);
 
 export default CharacterItemList;
