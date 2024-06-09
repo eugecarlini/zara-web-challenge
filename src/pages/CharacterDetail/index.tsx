@@ -2,6 +2,10 @@ import React, { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useCharacters } from "@/context/CharacterContext";
 import { useFavoriteList } from "@/context/FavoritesContext";
+import Container from "@/components/atoms/Container";
+import ComicsCarousel from "@/components/molecules/ComicsCarousel";
+import Hero from "@/components/molecules/Hero";
+import "./styles.css";
 
 const CharacterDetail: React.FC = () => {
   const { toggleFavorites } = useFavoriteList();
@@ -60,30 +64,23 @@ const CharacterDetail: React.FC = () => {
   const characterComics = comics[characterId];
 
   return (
-    <article>
-      <>
-        <h1>{selectedCharacter?.name}</h1>
-        <p>{selectedCharacter?.description}</p>
-        <img
-          src={selectedCharacter?.imageSrc}
-          alt={selectedCharacter?.name}
-          width="150"
-          height="150"
+    <main className="character-detail">
+      {selectedCharacter && (
+        <Hero
+          {...selectedCharacter}
+          // onToggleFavorite={toggleFavorites}
         />
-      </>
-
-      {characterComics && (
-        <ul>
-          {characterComics.map(({ id, name, imageSrc, year }) => (
-            <li key={id}>
-              <p>{name}</p>
-              <img src={imageSrc} alt={name} width="100" height="100" />
-              <p>Year: {year}</p>
-            </li>
-          ))}
-        </ul>
       )}
-    </article>
+
+      <section className="character-comics">
+        <Container>
+          <div className="character-comics__container">
+            <h2 className="character-comics__subtitle">Comics</h2>
+            {characterComics && <ComicsCarousel comics={characterComics} />}
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 };
 

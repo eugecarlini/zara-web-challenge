@@ -36,10 +36,15 @@ const Home: React.FC = () => {
   }
 
   return (
-    <>
+    <article>
       {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
       {characters && <CharacterItemList characters={filteredCharacters} />}
-    </>
+
+      {/* <>
+        {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
+        {characters && <CharacterItemList characters={filteredCharacters} />}
+      </> */}
+    </article>
   );
 };
 

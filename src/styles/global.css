@@ -1,10 +1,11 @@
-@import "@/styles/variables.css";
+@import "./variables.css";
 
 :root {
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
   font-weight: var(--font-weight-base);
   color: var(--text-color-base);
+  min-width: var(--min-width);
 }
 
 html {

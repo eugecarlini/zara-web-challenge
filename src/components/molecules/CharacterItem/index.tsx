@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Character } from "@/types/character";
-import "./styles.css";
-import FavoriteIcon from "@/components/atoms/FavoriteIcon";
 import useFavoriteCharacter from "@/hooks/useFavoriteCharacter";
+import ToggleFavoriteButton from "@/components/molecules/ToggleFavoriteButton";
+import "./styles.css";
 
 const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
-  const { isFavorited, toggleFavorite } = useFavoriteCharacter();
+  const { toggleFavorite } = useFavoriteCharacter();
 
   const handleToggleFavorite = useCallback(() => {
     toggleFavorite(id);
@@ -26,15 +26,7 @@ const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
       <footer className="character__footer">
         <div className="character__footer-bar"></div>
         <h2 className="character__footer-title">{name}</h2>
-        <button
-          className="character__footer-button"
-          onClick={handleToggleFavorite}
-          aria-label={`${
-            isFavorited(id) ? "Remove from favorites" : "Add to favorites"
-          }`}
-        >
-          <FavoriteIcon isFavorite={isFavorited(id)} />
-        </button>
+        <ToggleFavoriteButton onClick={handleToggleFavorite} />
       </footer>
     </article>
   );

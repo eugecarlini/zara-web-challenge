@@ -2,19 +2,23 @@ import React from "react";
 import "./styles.css";
 
 type FavoriteIconProps = {
-  isFavorite: boolean;
+  isActive: boolean;
+  width?: number;
+  height?: number;
 };
 
-const FavoriteIcon: React.FC<FavoriteIconProps> = ({ isFavorite }) => {
+const FavoriteIcon: React.FC<FavoriteIconProps> = ({
+  isActive,
+  width = 13,
+  height = 12,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="13"
-      height="12"
+      width={width}
+      height={height}
       fill="none"
-      className={`icon__favorite icon__favorite--${
-        isFavorite ? "red" : "empty"
-      }`}
+      className={`icon__favorite icon__favorite--${isActive ? "red" : "empty"}`}
     >
       <path
         fillRule="evenodd"
