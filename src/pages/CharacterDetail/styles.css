@@ -1,0 +1,83 @@
+.character-detail {
+  width: 100%;
+}
+
+.character-detail__hero {
+  background-color: var(--color-black);
+}
+
+.character-detail__hero-cover {
+  width: 100%;
+  height: auto;
+}
+
+.character-detail__info {
+  color: var(--color-white);
+  padding: 16px 16px 32px;
+}
+
+.character-detail__head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.character-detail__head-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.character-detail__subtitle {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* COMICS SECTION */
+
+.character-comics {
+  margin: 32px 0;
+}
+
+.character-comics .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-comics__subtitle {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .character-detail__hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    max-width: 960px;
+    margin: auto;
+  }
+
+  .character-detail__hero-cover {
+    width: 320px;
+  }
+
+  .character-detail__info {
+    width: 592px;
+    max-width: 592px;
+  }
+
+  .character-comics__container {
+    width: 960px;
+    max-width: 960px;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1512px) {
+  .character-detail__hero {
+    height: 320px;
+  }
+}
