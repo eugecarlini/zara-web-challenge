@@ -63,13 +63,7 @@ const CharacterDetail: React.FC = () => {
 
   return (
     <main className="character-detail">
-      {selectedCharacter && (
-        <Hero
-          {...selectedCharacter}
-          // onToggleFavorite={toggleFavorite}
-          // isFavorited={false}
-        />
-      )}
+      {selectedCharacter && <Hero {...selectedCharacter} />}
 
       <section className="character-comics">
         <Container>

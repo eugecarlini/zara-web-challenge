@@ -2,17 +2,17 @@ import React from "react";
 import HeroMetadata from "@/components/molecules/HeroMetadata";
 
 type HeroProps = {
+  id: number;
   imageSrc: string;
   name: string;
   description: string;
-  onToggleFavorite: () => void;
 };
 
 const Hero: React.FC<HeroProps> = ({
-  imageSrc = "",
+  id,
   name,
   description,
-  onToggleFavorite,
+  imageSrc = "",
 }) => {
   return (
     <section className="character-detail__hero" aria-labelledby="hero-title">
@@ -23,11 +23,7 @@ const Hero: React.FC<HeroProps> = ({
           alt={`Image of ${name}`}
         />
 
-        <HeroMetadata
-          name={name}
-          description={description}
-          onToggleFavorite={onToggleFavorite}
-        />
+        <HeroMetadata id={id} name={name} description={description} />
       </div>
     </section>
   );

@@ -1,6 +1,9 @@
+import { useFavoriteList } from "@/context/FavoritesContext";
 import { getFavoritesFromLocalStorage } from "@/utils/getFavoritesFromLocalStorage";
 
 const useFavoriteCharacter = () => {
+  const { updateFavoriteList } = useFavoriteList();
+
   if (!localStorage.getItem("favoriteCharacters")) {
     localStorage.setItem("favoriteCharacters", JSON.stringify([]));
   }
@@ -23,10 +26,14 @@ const useFavoriteCharacter = () => {
         JSON.stringify(updatedFavorites)
       );
     }
+
+    updateFavoriteList(getFavoritesFromLocalStorage());
   };
 
-  const isFavorited = (characterId: number): boolean =>
-    getFavoritesFromLocalStorage().includes(characterId);
+  const isFavorited = (characterId: number | null): boolean | false => {
+    if (!characterId) return false;
+    return getFavoritesFromLocalStorage().includes(characterId);
+  };
 
   return { getFavoritesFromLocalStorage, toggleFavorite, isFavorited };
 };

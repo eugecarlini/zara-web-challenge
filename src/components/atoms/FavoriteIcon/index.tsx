@@ -12,15 +12,13 @@ const FavoriteIcon: React.FC<FavoriteIconProps> = ({
   width = 13,
   height = 12,
 }) => {
-  const iconModifier = isActive ? "red" : "empty";
-
   return (
     <svg
-      className={`icon__favorite icon__favorite--${iconModifier}`}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
       fill="none"
+      className={`icon__favorite icon__favorite--${isActive ? "red" : "empty"}`}
     >
       <path
         fillRule="evenodd"

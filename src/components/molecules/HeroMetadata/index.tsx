@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import ToggleFavoriteButton from "@/components/molecules/ToggleFavoriteButton";
+import useFavoriteCharacter from "@/hooks/useFavoriteCharacter";
 
 type HeroMetadataProps = {
+  id: number;
   name: string;
   description: string;
-  onToggleFavorite: () => void;
 };
 
 const HeroMetadata: React.FC<HeroMetadataProps> = ({
+  id,
   name,
   description,
-  onToggleFavorite,
 }) => {
+  const { isFavorited, toggleFavorite } = useFavoriteCharacter();
+  const [isActive, setIsActive] = useState(isFavorited(id));
+
+  const handleToggleFavorite = useCallback(() => {
+    toggleFavorite(id);
+    setIsActive(!isActive);
+  }, [toggleFavorite, id]);
+
   return (
     <div className="character-detail__info">
       <div className="character-detail__head">
@@ -19,7 +28,10 @@ const HeroMetadata: React.FC<HeroMetadataProps> = ({
           {name}
         </h1>
 
-        <ToggleFavoriteButton onClick={onToggleFavorite} />
+        <ToggleFavoriteButton
+          isFavorited={isActive}
+          onClick={handleToggleFavorite}
+        />
       </div>
 
       <p className="character-detail__info-description">

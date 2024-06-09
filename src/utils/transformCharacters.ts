@@ -9,7 +9,6 @@ export const transformCharacters = (character: CharacterDto[]): Character[] => {
       name: name,
       description: description,
       imageSrc: `${thumbnail.path}.${thumbnail.extension}`,
-      isFavorite: false,
       url: `${CHARACTER_DETAIL_URL}/${id}`,
     })
   );
