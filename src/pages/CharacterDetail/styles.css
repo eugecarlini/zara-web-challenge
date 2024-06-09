@@ -38,7 +38,7 @@
 /* COMICS SECTION */
 
 .character-comics {
-  margin: 32px 0;
+  margin: 48px 0 32px;
 }
 
 .character-comics .container {
@@ -47,7 +47,10 @@
 }
 
 .character-comics__subtitle {
-  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 32px;
 }
 
 @media (min-width: 768px) {
