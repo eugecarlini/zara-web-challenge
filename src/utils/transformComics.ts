@@ -2,6 +2,10 @@ import { ComicDto } from "@/types/comicDto";
 import { Comic } from "@/types/comic";
 
 export const transformComics = (comics: ComicDto[]): Comic[] => {
+  if (!comics) {
+    return [];
+  }
+
   return comics?.map(({ id, title, thumbnail, dates }: ComicDto) => ({
     id,
     name: title,

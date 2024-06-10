@@ -8,9 +8,11 @@ const hasSearchTerm = (
 };
 
 const filterCharactersBySearch = (
-  characters: Character[],
+  characters: Character[] | null | undefined,
   searchTerm: string
-): Character[] =>
-  characters?.filter(({ name }) => hasSearchTerm(name, searchTerm));
+): Character[] => {
+  if (!characters) return [];
+  return characters.filter(({ name }) => hasSearchTerm(name, searchTerm));
+};
 
 export default filterCharactersBySearch;

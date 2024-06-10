@@ -5,7 +5,12 @@ const timestamp = "1";
 const apikey = import.meta.env.VITE_API_PUBLIC_KEY || API_PUBLIC_KEY;
 const secret = import.meta.env.VITE_API_PRIVATE_KEY;
 
-const generateHash = () => md5(timestamp + secret + apikey);
+export const generateHash = () => {
+  if (!secret) {
+    throw new Error("API private key not defined");
+  }
+  return md5(timestamp + secret + apikey);
+};
 
 export const generateQueryString = () => {
   const hash = generateHash();
