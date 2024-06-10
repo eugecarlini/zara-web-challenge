@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/marvel-logo.svg";
 import { useFavoriteList } from "@/context/FavoritesContext";
+import "./styles.css";
 
 const Logo: React.FC = () => {
   const { toggleFavorites } = useFavoriteList();
