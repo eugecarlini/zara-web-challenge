@@ -4,6 +4,8 @@ import { useCharacters } from "@/context/CharacterContext";
 import Container from "@/components/atoms/Container";
 import ComicsCarousel from "@/components/molecules/ComicsCarousel";
 import Hero from "@/components/molecules/Hero";
+import ErrorMessage from "@/components/molecules/ErrorMessage";
+import { CHARACTER_NOT_FOUND_MESSAGE } from "@/utils/constants";
 import "./styles.css";
 
 const CharacterDetail: React.FC = () => {
@@ -16,6 +18,7 @@ const CharacterDetail: React.FC = () => {
     fetchCharacterById,
     fetchComicsByCharacter,
     error,
+    isLoading,
   } = useCharacters();
   const characterId = Number(id);
 
@@ -46,30 +49,32 @@ const CharacterDetail: React.FC = () => {
   const selectedCharacter = contextCharacterById || characterById.at(0);
 
   if (!characterId) {
-    return <div>Character not found</div>;
+    return <ErrorMessage message={CHARACTER_NOT_FOUND_MESSAGE} />;
   }
 
   if (error) {
-    return <div>Error fetching character detail</div>;
+    return <ErrorMessage message={error} />;
   }
 
   const characterComics = comics[characterId];
 
   return (
     <main className="character-detail">
-      {selectedCharacter && <Hero {...selectedCharacter} />}
+      {selectedCharacter && !isLoading && <Hero {...selectedCharacter} />}
 
-      <section className="character-comics">
-        <Container>
-          <div className="character-comics__wrapper">
-            <h2 className="character-comics__subtitle">Comics</h2>
+      {!isLoading && (
+        <section className="character-comics">
+          <Container>
+            <div className="character-comics__wrapper">
+              <h2 className="character-comics__subtitle">Comics</h2>
 
-            {characterComics && characterComics.length ? (
-              <ComicsCarousel comics={characterComics} />
-            ) : null}
-          </div>
-        </Container>
-      </section>
+              {characterComics && characterComics.length ? (
+                <ComicsCarousel comics={characterComics} />
+              ) : null}
+            </div>
+          </Container>
+        </section>
+      )}
     </main>
   );
 };

@@ -13,7 +13,7 @@
 
 .character-detail__info {
   color: var(--color-white);
-  padding: 16px 16px 32px;
+  padding: 24px 16px 48px;
 }
 
 .character-detail__head {
