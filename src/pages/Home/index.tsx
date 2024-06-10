@@ -7,7 +7,7 @@ import Container from "@/components/atoms/Container";
 import "./styles.css";
 
 const Home: React.FC = () => {
-  const { characters, fetchCharacters, loading, error } = useCharacters();
+  const { characters, fetchCharacters, error } = useCharacters();
   const { showFavorites, favoriteList } = useFavoriteList();
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
 
@@ -26,10 +26,6 @@ const Home: React.FC = () => {
       setFilteredCharacters(characters);
     }
   }, [showFavorites, characters, favoriteList]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (error) {
     return <div>Error fetching characters</div>;
