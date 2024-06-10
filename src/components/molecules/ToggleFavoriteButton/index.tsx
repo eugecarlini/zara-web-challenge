@@ -19,6 +19,7 @@ const ToggleFavoriteButton: React.FC<ToggleFavoriteButtonProps> = ({
       aria-pressed={isFavorited}
       aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
       className="toggle-button"
+      data-testid="toggle-favorite-button"
     >
       <FavoriteIcon isActive={isFavorited} />
 

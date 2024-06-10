@@ -6,12 +6,18 @@ type ErrorMessageProps = {
   message: string;
 };
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({ message = "" }) => (
-  <article className="error-message">
-    <Container>
-      <p className="error-message__text">{message}</p>
-    </Container>
-  </article>
-);
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
+  if (!message) {
+    return null;
+  }
+
+  return (
+    <article className="error-message">
+      <Container>
+        <p className="error-message__text">{message}</p>
+      </Container>
+    </article>
+  );
+};
 
 export default ErrorMessage;
