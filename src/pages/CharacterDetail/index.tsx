@@ -17,8 +17,7 @@ const CharacterDetail: React.FC = () => {
     fetchComicsByCharacter,
     error,
   } = useCharacters();
-
-  const characterId = useMemo(() => Number(id), [id]);
+  const characterId = Number(id);
 
   useEffect(() => {
     if (!isNaN(characterId)) {
@@ -64,11 +63,10 @@ const CharacterDetail: React.FC = () => {
         <Container>
           <div className="character-comics__wrapper">
             <h2 className="character-comics__subtitle">Comics</h2>
+
             {characterComics && characterComics.length ? (
               <ComicsCarousel comics={characterComics} />
-            ) : (
-              <p>No comics found for this character</p>
-            )}
+            ) : null}
           </div>
         </Container>
       </section>

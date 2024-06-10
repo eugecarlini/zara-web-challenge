@@ -9,6 +9,7 @@
 .character-detail__comics-list-item {
   flex: 0 0 auto;
   width: 179.2px;
+  height: 340.8px;
 }
 
 .character-detail__comic-cover {
@@ -37,7 +38,8 @@
 
 @media (min-width: 1512px) {
   .character-detail__comic-cover {
-    width: 180px;
+    width: 179.2px;
+    object-fit: contain;
     margin-bottom: 8px;
   }
 
