@@ -1,4 +1,15 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   max-width: var(--container-max-width);
-  margin: var(--container-margin) auto;
+  margin: 0 auto;
+  padding: 0 16px;
+  min-width: var(--min-width);
+}
+
+@media (min-width: 1512px) {
+  .container {
+    padding: 0;
+  }
 }

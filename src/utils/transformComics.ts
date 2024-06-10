@@ -1,7 +1,7 @@
 import { ComicDto } from "@/types/comicDto";
-import { FormattedComic } from "@/types/formattedTypes";
+import { Comic } from "@/types/comic";
 
-export const transformComics = (comics: ComicDto[]): FormattedComic[] => {
+export const transformComics = (comics: ComicDto[]): Comic[] => {
   return comics?.map(({ id, title, thumbnail, dates }: ComicDto) => ({
     id,
     name: title,

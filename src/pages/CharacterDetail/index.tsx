@@ -1,11 +1,23 @@
 import React, { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useCharacters } from "@/context/CharacterContext";
+import Container from "@/components/atoms/Container";
+import ComicsCarousel from "@/components/molecules/ComicsCarousel";
+import Hero from "@/components/molecules/Hero";
+import "./styles.css";
 
 const CharacterDetail: React.FC = () => {
   const { id } = useParams<{ id: string | undefined }>();
-  const { characters, comics, fetchComicsByCharacter, loading, error } =
-    useCharacters();
+  const {
+    characters,
+    characterById,
+    comics,
+    fetchCharacters,
+    fetchCharacterById,
+    fetchComicsByCharacter,
+    loading,
+    error,
+  } = useCharacters();
 
   const characterId = useMemo(() => Number(id), [id]);
 
@@ -16,16 +28,24 @@ const CharacterDetail: React.FC = () => {
   }, [characterId, fetchComicsByCharacter, id]);
 
   useEffect(() => {
-    // If context api state is not undefined
     if (characterId && characters.length !== 0) {
       fetchComicsByCharacter(characterId.toString());
     }
   }, [id, fetchComicsByCharacter]);
 
-  const characterById = useMemo(
+  useEffect(() => {
+    // If context api state is not undefined
+    if (characterId && !characters.length) {
+      fetchCharacterById(id!);
+    }
+  }, [id, fetchCharacters]);
+
+  const contextCharacterById = useMemo(
     () => characters.find((character) => character.id === Number(id)),
     [characters, characterId]
   );
+
+  const selectedCharacter = contextCharacterById || characterById.at(0);
 
   if (!characterId) {
     return <div>Character not found</div>;
@@ -42,34 +62,22 @@ const CharacterDetail: React.FC = () => {
   const characterComics = comics[characterId];
 
   return (
-    <article>
-      {characters.length ? (
-        <>
-          <h1>{characterById?.name}</h1>
-          <p>{characterById?.description}</p>
-          <img
-            src={characterById?.imageSrc}
-            alt={characterById?.name}
-            width="150"
-            height="150"
-          />
-        </>
-      ) : (
-        <p>Character not found</p>
-      )}
+    <main className="character-detail">
+      {selectedCharacter && <Hero {...selectedCharacter} />}
 
-      {characterComics && (
-        <ul>
-          {characterComics.map(({ id, name, imageSrc, year }) => (
-            <li key={id}>
-              <p>{name}</p>
-              <img src={imageSrc} alt={name} width="100" height="100" />
-              <p>Year: {year}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </article>
+      <section className="character-comics">
+        <Container>
+          <div className="character-comics__wrapper">
+            <h2 className="character-comics__subtitle">Comics</h2>
+            {characterComics && characterComics.length ? (
+              <ComicsCarousel comics={characterComics} />
+            ) : (
+              <p>No comics found for this character</p>
+            )}
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 };
 

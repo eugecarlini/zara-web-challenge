@@ -1,0 +1,13 @@
+.header {
+  background-color: var(--color-black);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--min-width);
+  border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.header__button {
+  color: var(--color-white);
+}

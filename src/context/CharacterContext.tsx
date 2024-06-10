@@ -8,17 +8,21 @@ import React, {
 import {
   getComicsByCharacterId,
   getCharacters,
+  getCharacterById,
 } from "@/services/characterService";
 import { transformCharacters } from "@/utils/transformCharacters";
 import { transformComics } from "@/utils/transformComics";
-import { FormattedCharacter, FormattedComic } from "@/types/formattedTypes";
+import { Character } from "@/types/character";
+import { Comic } from "@/types/comic";
 import { CharacterDto } from "@/types/characterDto";
 import { ComicDto } from "@/types/comicDto";
 
 interface CharacterContextProps {
-  characters: FormattedCharacter[];
+  characters: Character[];
+  characterById: Character[];
+  comics: { [key: string]: Comic[] };
   fetchCharacters: () => void;
-  comics: { [key: string]: FormattedComic[] };
+  fetchCharacterById: (id: string) => void;
   fetchComicsByCharacter: (id: string) => void;
   loading: boolean;
   error: any;
@@ -33,9 +37,10 @@ const CharacterContext = createContext<CharacterContextProps | undefined>(
 );
 
 const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
-  const [characters, setCharacters] = useState<FormattedCharacter[]>([]);
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [characterById, setCharacterById] = useState<Character[]>([]);
   const [comics, setComics] = useState<{
-    [key: string]: FormattedComic[];
+    [key: string]: Comic[];
   }>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
@@ -51,6 +56,24 @@ const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
         setCharacters(transformedCharacters);
       } catch (error) {
         console.error("Error fetching characters:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, []);
+
+  const fetchCharacterById = useCallback(async (id: string) => {
+    if (characters.length === 0) {
+      setLoading(true);
+
+      try {
+        const characterById: CharacterDto[] = await getCharacterById(id);
+        const transformedCharacter = transformCharacters(characterById);
+
+        setCharacterById(transformedCharacter);
+      } catch (error) {
+        console.error("Error fetching character by ID:", error);
         setError(error);
       } finally {
         setLoading(false);
@@ -94,8 +117,10 @@ const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
     <CharacterContext.Provider
       value={{
         characters,
-        fetchCharacters,
+        characterById,
         comics,
+        fetchCharacters,
+        fetchCharacterById,
         fetchComicsByCharacter,
         loading,
         error,

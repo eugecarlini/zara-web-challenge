@@ -1,13 +1,31 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useFavoriteList } from "@/context/FavoritesContext";
 import { useCharacters } from "@/context/CharacterContext";
+import CharacterItemList from "@/components/molecules/CharacterItemList";
+import { Character } from "@/types/character";
+import Container from "@/components/atoms/Container";
+import "./styles.css";
 
 const Home: React.FC = () => {
   const { characters, fetchCharacters, loading, error } = useCharacters();
+  const { showFavorites, favoriteList } = useFavoriteList();
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
 
   useEffect(() => {
     fetchCharacters();
   }, []);
+
+  useEffect(() => {
+    if (showFavorites) {
+      const favorites = favoriteList;
+      const filteredFavs = characters.filter((character) =>
+        favorites.includes(character.id)
+      );
+      setFilteredCharacters(filteredFavs);
+    } else {
+      setFilteredCharacters(characters);
+    }
+  }, [showFavorites, characters, favoriteList]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -18,20 +36,12 @@ const Home: React.FC = () => {
   }
 
   return (
-    <article>
-      {characters && (
-        <ul>
-          {characters.map(({ id, imageSrc, name, url }) => (
-            <li key={id}>
-              <Link to={url} key={id}>
-                <img src={imageSrc} alt={name} width="150" height="150" />
-                <h2>{name}</h2>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </article>
+    <Container>
+      <article className="home__wrapper">
+        {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
+        {characters && <CharacterItemList characters={filteredCharacters} />}
+      </article>
+    </Container>
   );
 };
 

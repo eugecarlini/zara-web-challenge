@@ -1,0 +1,51 @@
+.character-detail__comics-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  gap: 16px;
+}
+
+.character-detail__comics-list-item {
+  flex: 0 0 auto;
+  width: 179.2px;
+}
+
+.character-detail__comic-cover {
+  width: 100%;
+  height: 268.8px;
+}
+
+.character-detail__comic-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.character-detail__comic-year {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  white-space: nowrap;
+  padding-bottom: 32px;
+}
+
+@media (min-width: 1512px) {
+  .character-detail__comic-cover {
+    width: 180px;
+    margin-bottom: 8px;
+  }
+
+  .character-detail__comics-list {
+    width: 960px;
+  }
+
+  .comic-cover {
+    flex: 0 0 19.33%;
+  }
+}
