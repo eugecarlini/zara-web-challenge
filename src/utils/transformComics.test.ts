@@ -28,16 +28,61 @@ describe("transformComics function", () => {
         textObjects: [],
         resourceURI: "",
         urls: [],
-        series: undefined,
         variants: [],
         collections: [],
         collectedIssues: [],
         prices: [],
         images: [],
-        creators: undefined,
-        characters: undefined,
-        stories: undefined,
-        events: undefined,
+        series: {
+          resourceURI: "",
+          name: "",
+        },
+        creators: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+              role: "",
+            },
+          ],
+          returned: 0,
+        },
+        characters: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+            },
+          ],
+          returned: 0,
+        },
+        stories: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+              type: "",
+            },
+          ],
+          returned: 0,
+        },
+        events: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+            },
+          ],
+          returned: 0,
+        },
       },
       {
         id: 2,
@@ -62,16 +107,61 @@ describe("transformComics function", () => {
         textObjects: [],
         resourceURI: "",
         urls: [],
-        series: undefined,
         variants: [],
         collections: [],
         collectedIssues: [],
         prices: [],
         images: [],
-        creators: undefined,
-        characters: undefined,
-        stories: undefined,
-        events: undefined,
+        series: {
+          resourceURI: "",
+          name: "",
+        },
+        creators: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+              role: "",
+            },
+          ],
+          returned: 0,
+        },
+        characters: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+            },
+          ],
+          returned: 0,
+        },
+        stories: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+              type: "",
+            },
+          ],
+          returned: 0,
+        },
+        events: {
+          available: 0,
+          collectionURI: "",
+          items: [
+            {
+              resourceURI: "",
+              name: "",
+            },
+          ],
+          returned: 0,
+        },
       },
     ];
 

@@ -3,7 +3,7 @@ import HeroMetadata from "@/components/molecules/HeroMetadata";
 
 type HeroProps = {
   id: number;
-  imageSrc: string;
+  imageSrc?: string;
   name: string;
   description: string;
 };

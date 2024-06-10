@@ -34,8 +34,8 @@ describe("HeroMetadata Component", () => {
   });
 
   test("toggles favorite status when favorite button is clicked", () => {
-    const { container } = render(<HeroMetadata {...heroData} />);
-    const favoriteButton = container.querySelector("button");
+    const { getByTestId } = render(<HeroMetadata {...heroData} />);
+    const favoriteButton = getByTestId("toggle-favorite-button");
     expect(favoriteButton).toBeInTheDocument();
     fireEvent.click(favoriteButton);
 

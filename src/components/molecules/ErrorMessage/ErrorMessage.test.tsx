@@ -11,7 +11,7 @@ describe("ErrorMessage Component", () => {
   });
 
   test("renders empty error message when not provided", () => {
-    const { container } = render(<ErrorMessage />);
+    const { container } = render(<ErrorMessage message={""} />);
     const errorMessageElement = container.querySelector(".error-message__text");
     expect(errorMessageElement).toBeNull();
   });
