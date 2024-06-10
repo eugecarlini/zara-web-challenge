@@ -38,6 +38,6 @@
       "@types": ["src/types/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "./jest.setup.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

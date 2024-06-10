@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
@@ -22,5 +24,10 @@ export default defineConfig({
       "@types": path.resolve(__dirname, "./src/types"),
       "@mocks": path.resolve(__dirname, "./src/mocks"),
     },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./jest.setup.js",
   },
 });
