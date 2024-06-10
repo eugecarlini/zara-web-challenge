@@ -7,24 +7,26 @@ type ComicsCarouselProps = {
 };
 
 const ComicsCarousel: React.FC<ComicsCarouselProps> = ({ comics }) => (
-  <ul className="character-detail__comics-list" aria-label="List of comics">
-    {comics.map(({ id, name, imageSrc, year }) => (
-      <li key={id} className="comic-item character-detail__comics-list-item">
-        <figure>
-          <img
-            className="character-detail__comic-cover"
-            src={imageSrc}
-            alt={`Cover of ${name}`}
-          />
+  <div className="carousel-comics">
+    <ul className="carousel-comics__list" role="list">
+      {comics.map(({ id, name, imageSrc, year }) => (
+        <li key={id} className="carousel-comics__list-item" role="listitem">
+          <figure>
+            <img
+              className="carousel-comics__cover"
+              src={imageSrc}
+              alt={`Cover of ${name}`}
+            />
 
-          <figcaption className="character-detail__comic-caption">
-            <p className="character-detail__comic-name">{name}</p>
-            <p className="character-detail__comic-year">{year}</p>
-          </figcaption>
-        </figure>
-      </li>
-    ))}
-  </ul>
+            <figcaption className="carousel-comics__footer">
+              <p className="carousel-comics__name">{name}</p>
+              <p className="carousel-comics__year">{year}</p>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
 );
 
 export default ComicsCarousel;
