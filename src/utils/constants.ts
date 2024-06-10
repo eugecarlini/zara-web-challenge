@@ -5,3 +5,6 @@ export const CHARACTERS_ROUTE =
   import.meta.env.VITE_CHARACTERS_ROUTE || "/public/characters";
 export const COMICS_ROUTE = import.meta.env.VITE_COMICS_ROUTE || "/comics";
 export const CHARACTER_DETAIL_URL = "/character-detail";
+export const GENERIC_MESSAGE = "An error occurred. Please try again later.";
+export const CHARACTER_NOT_FOUND_MESSAGE =
+  "Character not found. Please try again.";

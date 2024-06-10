@@ -1,6 +1,7 @@
 import React from "react";
-import { useRouteError } from "react-router-dom";
+import { Link, useRouteError } from "react-router-dom";
 import Container from "@/components/atoms/Container";
+import "./styles.css";
 
 type Error = {
   statusText?: string;
@@ -12,10 +13,11 @@ const Error: React.FC = () => {
 
   return (
     <Container>
-      <article id="error-page">
+      <article className="error-page">
         <h1>Oops!</h1>
         <p>Sorry, an unexpected error has occurred.</p>
         <p>{error?.statusText || error?.message}</p>
+        <Link to="/">Go to Home</Link>
       </article>
     </Container>
   );

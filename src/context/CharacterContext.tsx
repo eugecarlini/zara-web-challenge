@@ -17,6 +17,7 @@ import { Comic } from "@/types/comic";
 import { CharacterDto } from "@/types/characterDto";
 import { ComicDto } from "@/types/comicDto";
 import { useLoading } from "@/context/LoadingContext";
+import { CHARACTER_NOT_FOUND_MESSAGE } from "@/utils/constants";
 
 interface CharacterContextProps {
   isLoading: boolean;
@@ -48,31 +49,40 @@ const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
 
   const fetchCharacters = useCallback(async () => {
     if (characters.length === 0) {
+      setIsLoading(!isLoading);
+      setError(null);
+
       try {
         const charactersData: CharacterDto[] = await getCharacters();
         const transformedCharacters = transformCharacters(charactersData);
         setCharacters(transformedCharacters);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error fetching characters:", error);
         setError(error);
       } finally {
-        setIsLoading(!isLoading);
+        setIsLoading(false);
       }
     }
-  }, [isLoading]);
+  }, []);
 
   const fetchCharacterById = useCallback(async (id: string) => {
-    if (characters.length === 0) {
+    if (!characters || characters?.length === 0) {
+      setIsLoading(!isLoading);
+      setError(null);
+
       try {
         const characterById: CharacterDto[] = await getCharacterById(id);
         const transformedCharacter = transformCharacters(characterById);
 
         setCharacterById(transformedCharacter);
-      } catch (error) {
-        console.error("Error fetching character by ID:", error);
-        setError(error);
+      } catch (error: any) {
+        if (error?.response?.data?.code === 404) {
+          setError(CHARACTER_NOT_FOUND_MESSAGE);
+        } else {
+          setError(error);
+        }
       } finally {
-        setIsLoading(!isLoading);
+        setIsLoading(false);
       }
     }
   }, []);
@@ -90,6 +100,8 @@ const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
     }
 
     if (!comics[id]) {
+      setIsLoading(!isLoading);
+
       try {
         const comicsData: ComicDto[] = await getComicsByCharacterId(id);
         const transformedComics = transformComics(comicsData);
@@ -102,7 +114,7 @@ const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
         console.error("Error fetching comics:", error);
         setError(error);
       } finally {
-        setIsLoading(!isLoading);
+        setIsLoading(false);
       }
     }
   }, []);
