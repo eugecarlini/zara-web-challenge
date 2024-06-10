@@ -12,6 +12,12 @@
   transition: all 0.3s ease-in-out;
 }
 
+.character__item:hover .favorite-icon {
+  fill: var(--color-white);
+  stroke: var(--color-white);
+  transition: all 0.3s ease-in-out;
+}
+
 .character__footer {
   height: 56px;
   display: flex;
@@ -54,7 +60,7 @@
 .character__item-link {
   width: 172.5px;
   height: 189.97px;
-  background-color: var(--color-red);
+  background-color: var(--color-black);
 }
 
 @media (min-width: 1512px) {

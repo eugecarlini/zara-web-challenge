@@ -3,8 +3,9 @@ import { getFavoritesFromLocalStorage } from "@/utils/getFavoritesFromLocalStora
 
 interface FavoritesContextProps {
   showFavorites: boolean;
-  toggleFavorites: (isActive: boolean) => void;
   favoriteList: number[];
+  favoritesCount: number;
+  toggleFavorites: (isActive: boolean) => void;
   updateFavoriteList: (ids: number[]) => void;
 }
 
@@ -30,6 +31,7 @@ export const FavoriteListProvider: React.FC<{ children: React.ReactNode }> = ({
         showFavorites,
         toggleFavorites,
         updateFavoriteList,
+        favoritesCount: favoriteList.length,
       }}
     >
       {children}
