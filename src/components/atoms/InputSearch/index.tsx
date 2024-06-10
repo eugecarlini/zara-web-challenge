@@ -21,6 +21,7 @@ export const InputSearch: FC<InputSearchProps> = ({
     </button>
 
     <input
+      data-testid="search-input"
       id="searchInput"
       className="search__input"
       type="text"
