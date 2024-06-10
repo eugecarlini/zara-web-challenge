@@ -9,9 +9,9 @@ interface FavoritesContextProps {
   updateFavoriteList: (ids: number[]) => void;
 }
 
-const FavoritesContext = createContext<FavoritesContextProps | undefined>(
-  undefined
-);
+export const FavoritesContext = createContext<
+  FavoritesContextProps | undefined
+>(undefined);
 
 export const FavoriteListProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
