@@ -3,6 +3,10 @@ import { Character } from "@/types/character";
 import { CHARACTER_DETAIL_URL } from "@/utils/constants";
 
 export const transformCharacters = (character: CharacterDto[]): Character[] => {
+  if (!character) {
+    return [];
+  }
+
   return character?.map(
     ({ id, name, description, thumbnail }: CharacterDto) => ({
       id: id,
