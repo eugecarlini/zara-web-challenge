@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useFavoriteList } from "@/context/FavoritesContext";
 import { useCharacters } from "@/context/CharacterContext";
-import CharacterItemList from "@/components/molecules/CharacterItemList";
 import { Character } from "@/types/character";
 import Container from "@/components/atoms/Container";
+import SearchCharacters from "@/components/molecules/SearchCharacters";
 import "./styles.css";
 
 const Home: React.FC = () => {
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
     <Container>
       <article className="home__wrapper">
         {showFavorites && <p className="home__title">Favorites</p>}
-        {characters && <CharacterItemList characters={filteredCharacters} />}
+        <SearchCharacters characters={filteredCharacters} />
       </article>
     </Container>
   );
