@@ -1,9 +1,9 @@
 .loading-bar {
   width: 100%;
-  height: 8px;
+  height: 5.8px;
   background-color: transparent;
   position: absolute;
-  bottom: -9px;
+  bottom: -7px;
   overflow: hidden;
   animation: width-animation 2s linear infinite;
 }
