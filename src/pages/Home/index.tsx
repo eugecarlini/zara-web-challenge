@@ -38,7 +38,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <article className="home__wrapper">
-        {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
+        {showFavorites && <p className="home__title">Favorites</p>}
         {characters && <CharacterItemList characters={filteredCharacters} />}
       </article>
     </Container>

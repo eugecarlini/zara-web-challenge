@@ -3,24 +3,32 @@ import FavoriteIcon from "@/components/atoms/FavoriteIcon";
 import "./styles.css";
 
 type ToggleFavoriteButtonProps = {
-  isFavorited: boolean;
+  isFavorited?: boolean;
   onClick: () => void;
-  className?: string;
+  count?: string;
 };
 
 const ToggleFavoriteButton: React.FC<ToggleFavoriteButtonProps> = ({
-  isFavorited,
+  isFavorited = false,
   onClick,
-  className = "",
-}) => (
-  <button
-    onClick={onClick}
-    className={`button_toggle-favorite ${className}`.trim()}
-    aria-pressed={isFavorited}
-    aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
-  >
-    <FavoriteIcon isActive={isFavorited} />
-  </button>
-);
+  count,
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      aria-pressed={isFavorited}
+      aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+      className="toggle-button"
+    >
+      <FavoriteIcon isActive={isFavorited} />
+
+      {count && (
+        <span className="toggle-button__count" aria-hidden="true">
+          {count}
+        </span>
+      )}
+    </button>
+  );
+};
 
 export default ToggleFavoriteButton;

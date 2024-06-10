@@ -13,8 +13,8 @@ const FavoriteIcon: React.FC<FavoriteIconProps> = ({ isActive }) => {
       className={`favorite-icon favorite-icon--${modifier}`}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
-      height="22"
-      viewBox="-1 -1 26 24"
+      height="24"
+      viewBox="-1 -1 26 26"
       fill="none"
     >
       <path
