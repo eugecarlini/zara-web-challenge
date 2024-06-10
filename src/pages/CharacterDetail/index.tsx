@@ -15,7 +15,6 @@ const CharacterDetail: React.FC = () => {
     fetchCharacters,
     fetchCharacterById,
     fetchComicsByCharacter,
-    loading,
     error,
   } = useCharacters();
 
@@ -49,10 +48,6 @@ const CharacterDetail: React.FC = () => {
 
   if (!characterId) {
     return <div>Character not found</div>;
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
   }
 
   if (error) {
