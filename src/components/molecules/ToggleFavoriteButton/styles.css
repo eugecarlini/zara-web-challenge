@@ -1,3 +1,11 @@
-.button_toggle-favorite {
-  height: 12px;
+.toggle-button {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-button__count {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 8px;
 }

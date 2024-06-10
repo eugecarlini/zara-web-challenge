@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useFavoriteList } from "@/context/FavoritesContext";
 import { useCharacters } from "@/context/CharacterContext";
-import CharacterItemList from "@/components/molecules/CharacterItemList";
 import { Character } from "@/types/character";
 import Container from "@/components/atoms/Container";
+import SearchCharacters from "@/components/molecules/SearchCharacters";
+import ErrorMessage from "@/components/molecules/ErrorMessage";
 import "./styles.css";
+import { GENERIC_MESSAGE } from "@/utils/constants";
 
 const Home: React.FC = () => {
-  const { characters, fetchCharacters, loading, error } = useCharacters();
+  const { characters, fetchCharacters, isLoading, error } = useCharacters();
   const { showFavorites, favoriteList } = useFavoriteList();
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
 
@@ -27,19 +29,15 @@ const Home: React.FC = () => {
     }
   }, [showFavorites, characters, favoriteList]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
-    return <div>Error fetching characters</div>;
+    return <ErrorMessage message={GENERIC_MESSAGE} />;
   }
 
   return (
     <Container>
       <article className="home__wrapper">
-        {showFavorites && <p>ESTOS SON LOS FAVORITOS:</p>}
-        {characters && <CharacterItemList characters={filteredCharacters} />}
+        {showFavorites && <p className="home__title">Favorites</p>}
+        {!isLoading && <SearchCharacters characters={filteredCharacters} />}
       </article>
     </Container>
   );
