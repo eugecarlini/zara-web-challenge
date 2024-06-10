@@ -15,7 +15,11 @@ const Hero: React.FC<HeroProps> = ({
   imageSrc = "",
 }) => {
   return (
-    <section className="character-detail__hero" aria-labelledby="hero-title">
+    <section
+      className="character-detail__hero"
+      aria-labelledby="hero-title"
+      data-testid="hero-section"
+    >
       <div className="character-detail__hero-container">
         <img
           className="character-detail__hero-cover"

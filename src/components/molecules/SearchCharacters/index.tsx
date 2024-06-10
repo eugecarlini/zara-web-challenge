@@ -17,7 +17,7 @@ const SearchCharacters: React.FC<{ characters: Character[] }> = ({
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="search-characters-input">
       <div className="search__container">
         <InputSearch value={searchTerm} onKeyDown={handleKeyDown} />
         <Tag text={charactersCount} />

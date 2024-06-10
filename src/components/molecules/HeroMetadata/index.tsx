@@ -22,7 +22,7 @@ const HeroMetadata: React.FC<HeroMetadataProps> = ({
   }, [toggleFavorite, id]);
 
   return (
-    <div className="character-detail__info">
+    <div className="character-detail__info" data-testid="hero-metadata">
       <div className="character-detail__head">
         <h1 id="hero-title" className="character-detail__head-title">
           {name}
