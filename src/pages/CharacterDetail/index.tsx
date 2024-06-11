@@ -14,7 +14,6 @@ const CharacterDetail: React.FC = () => {
     characters,
     characterById,
     comics,
-    fetchCharacters,
     fetchCharacterById,
     fetchComicsByCharacter,
     error,
@@ -23,23 +22,14 @@ const CharacterDetail: React.FC = () => {
   const characterId = Number(id);
 
   useEffect(() => {
+    if (characterId && !characters.length) {
+      fetchCharacterById(id!);
+    }
+
     if (!isNaN(characterId)) {
       fetchComicsByCharacter(id!);
     }
   }, [characterId, fetchComicsByCharacter, id]);
-
-  useEffect(() => {
-    if (characterId && characters.length !== 0) {
-      fetchComicsByCharacter(characterId.toString());
-    }
-  }, [id, fetchComicsByCharacter]);
-
-  useEffect(() => {
-    // If context api state is not undefined
-    if (characterId && !characters.length) {
-      fetchCharacterById(id!);
-    }
-  }, [id, fetchCharacters]);
 
   const contextCharacterById = useMemo(
     () => characters.find((character) => character.id === Number(id)),
