@@ -1,0 +1,23 @@
+.character-detail__info {
+  color: var(--color-white);
+  position: relative;
+  padding: 24px 16px 48px;
+}
+
+@media (min-width: 768px) {
+  .character-detail__info {
+    width: 640px;
+    max-width: 640px;
+    padding: 0 24px;
+  }
+
+  .character-detail__info .triangle {
+    display: none;
+  }
+}
+
+@media (min-width: 1512px) {
+  .character-detail__info {
+    padding: 0 0 0 48px;
+  }
+}

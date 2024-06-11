@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from "react";
 import ToggleFavoriteButton from "@/components/molecules/ToggleFavoriteButton";
 import useFavoriteCharacter from "@/hooks/useFavoriteCharacter";
+import { Triangle } from "@/components/atoms/Triangle";
+import "./styles.css";
 
 type HeroMetadataProps = {
   id: number;
@@ -37,6 +39,8 @@ const HeroMetadata: React.FC<HeroMetadataProps> = ({
       <p className="character-detail__info-description">
         {description || "No description available"}
       </p>
+
+      <Triangle />
     </div>
   );
 };

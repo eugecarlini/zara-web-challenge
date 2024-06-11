@@ -1,35 +1,17 @@
 .loading-bar {
   width: 100%;
   height: 5.8px;
-  background-color: transparent;
   position: absolute;
   bottom: -7px;
   overflow: hidden;
-  animation: width-animation 2s linear infinite;
+  z-index: 1;
+  background: linear-gradient(var(--color-red) 0 0) left/0% 100% no-repeat
+    var(--color-white);
+  animation: progress-animation 2s infinite linear;
 }
 
-.loading-bar--active {
-  background-color: var(--color-red);
-}
-
-.loading-bar__progress {
-  width: 0;
-  height: 100%;
-  background-color: var(--color-red);
-  transition: width 0.3s ease;
-  animation: width-animation 2s linear infinite;
-}
-
-.loading-bar--active .loading-bar__progress {
-  width: 100%;
-}
-
-@keyframes width-animation {
-  0% {
-    width: 0;
-  }
-
+@keyframes progress-animation {
   100% {
-    width: 100%;
+    background-size: 100% 100%;
   }
 }
