@@ -9,6 +9,7 @@ export const generateHash = () => {
   if (!secret) {
     throw new Error("API private key not defined");
   }
+
   return md5(timestamp + secret + apikey);
 };
 
