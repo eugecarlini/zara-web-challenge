@@ -1,0 +1,9 @@
+.triangle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 18px solid transparent;
+  border-right: 18px solid var(--color-white);
+}

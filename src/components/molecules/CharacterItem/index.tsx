@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Character } from "@/types/character";
 import useFavoriteCharacter from "@/hooks/useFavoriteCharacter";
 import ToggleFavoriteButton from "@/components/molecules/ToggleFavoriteButton";
+import { Triangle } from "@/components/atoms/Triangle";
 import "./styles.css";
 
 const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
@@ -33,6 +34,8 @@ const CharacterItem: React.FC<Character> = ({ id, url, imageSrc, name }) => {
           isFavorited={isActive}
           onClick={handleToggleFavorite}
         />
+
+        <Triangle />
       </footer>
     </article>
   );
