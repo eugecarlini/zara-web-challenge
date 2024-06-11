@@ -32,7 +32,8 @@ const Header: React.FC = () => {
           aria-label={`You have ${favoriteList?.length || 0} favorite items`}
         />
       </Container>
-      {isLoading && <LoadingBar isLoading={isLoading} />}
+
+      {isLoading && <LoadingBar />}
     </header>
   );
 };

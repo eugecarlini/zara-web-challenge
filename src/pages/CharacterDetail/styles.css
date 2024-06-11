@@ -11,11 +11,6 @@
   height: auto;
 }
 
-.character-detail__info {
-  color: var(--color-white);
-  padding: 24px 16px 48px;
-}
-
 .character-detail__head {
   display: flex;
   justify-content: space-between;
@@ -71,12 +66,6 @@
     object-fit: cover;
   }
 
-  .character-detail__info {
-    width: 640px;
-    max-width: 640px;
-    padding: 0 24px;
-  }
-
   .character-comics__wrapper {
     width: 960px;
     max-width: 960px;
@@ -93,9 +82,5 @@
     width: 320px;
     height: 320px;
     object-fit: cover;
-  }
-
-  .character-detail__info {
-    padding: 0 0 0 48px;
   }
 }
